@@ -1,0 +1,11 @@
+{
+  "files": [],
+  "references": [
+    { "path": "packages/eslint-plugin-harness" },
+    { "path": "packages/observability" },
+    { "path": "packages/ui-validation" },
+    { "path": "packages/pr-lifecycle" },
+    { "path": "packages/quality" },
+    { "path": "apps/example" }
+  ]
+}
