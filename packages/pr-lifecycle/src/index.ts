@@ -1,2 +1,12 @@
-// barrel export — populated by component tasks
-export {};
+export * from './types.js';
+export * from './config.js';
+export * from './gh-client.js';
+export * from './create-pr.js';
+export * from './request-review.js';
+export * from './read-comments.js';
+export * from './respond-to-review.js';
+export * from './approve-and-merge.js';
+export * from './ralph-loop.js';
+export * from './worktree-manager.js';
+export * from './review-orchestrator.js';
+export * from './quality-gates.js';

@@ -1,0 +1,15 @@
+- name: agent-task
+  color: '0075ca'
+  description: 'Task to be executed by an AI agent'
+- name: agent-review-requested
+  color: 'e4e669'
+  description: 'Agent review has been requested'
+- name: auto-merge
+  color: '0e8a16'
+  description: 'Auto-merge when checks pass'
+- name: entropy-cleanup
+  color: 'd93f0b'
+  description: 'Automated entropy cleanup'
+- name: quality-update
+  color: 'c5def5'
+  description: 'Quality score update'

@@ -1,0 +1,41 @@
+data_dir: /var/lib/vector
+
+sources:
+  otlp:
+    type: opentelemetry
+    http:
+      address: 0.0.0.0:4318
+
+transforms:
+  add_worktree_label:
+    type: remap
+    inputs:
+      - otlp
+    source: |
+      .labels.worktree = get_env_var("HARNESS_WORKTREE") ?? "default"
+
+sinks:
+  victoria_logs:
+    type: http
+    inputs:
+      - add_worktree_label
+    uri: 'http://victoria-logs:9428/insert/jsonline'
+    method: post
+    framing:
+      method: newline_delimited
+    encoding:
+      codec: json
+
+  victoria_metrics:
+    type: prometheus_remote_write
+    inputs:
+      - add_worktree_label
+    endpoint: 'http://victoria-metrics:8428/api/v1/import/prometheus'
+
+  victoria_traces:
+    type: opentelemetry
+    inputs:
+      - add_worktree_label
+    protocol:
+      type: http
+      uri: 'http://victoria-traces:8428/v1/traces'

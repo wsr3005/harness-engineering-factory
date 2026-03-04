@@ -1,0 +1,43 @@
+name: Ralph Loop Controller
+on:
+  workflow_dispatch:
+    inputs:
+      task_description:
+        description: 'Task description for the agent'
+        required: true
+        type: string
+      max_attempts:
+        description: 'Maximum retry attempts'
+        required: false
+        default: '5'
+        type: string
+      base_branch:
+        description: 'Base branch'
+        required: false
+        default: 'main'
+        type: string
+jobs:
+  ralph-loop:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - name: Run Ralph Loop
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TASK_DESCRIPTION: ${{ inputs.task_description }}
+          MAX_ATTEMPTS: ${{ inputs.max_attempts }}
+          BASE_BRANCH: ${{ inputs.base_branch }}
+        run: |
+          npx tsx packages/pr-lifecycle/src/ralph-loop.ts \
+            --task "$TASK_DESCRIPTION" \
+            --max-attempts "$MAX_ATTEMPTS" \
+            --base "$BASE_BRANCH"

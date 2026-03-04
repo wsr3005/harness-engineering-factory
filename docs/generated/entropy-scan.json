@@ -1,0 +1,771 @@
+{
+  "timestamp": "2026-03-04T04:02:18.209Z",
+  "scan": {
+    "timestamp": "2026-03-04T04:02:18.200Z",
+    "deviations": [
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "high",
+        "file": "E:\\Project\\harness\\packages\\observability\\src\\logger.test.ts",
+        "line": 20,
+        "description": "JSON.parse() used without visible Zod validation in file.",
+        "suggestedFix": "Validate parsed payload with Zod before use in domain/runtime logic."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "high",
+        "file": "E:\\Project\\harness\\packages\\pr-lifecycle\\src\\gh-client.ts",
+        "line": 47,
+        "description": "JSON.parse() used without visible Zod validation in file.",
+        "suggestedFix": "Validate parsed payload with Zod before use in domain/runtime logic."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "high",
+        "file": "E:\\Project\\harness\\packages\\quality\\src\\entropy\\patterns.ts",
+        "line": 165,
+        "description": "JSON.parse() used without visible Zod validation in file.",
+        "suggestedFix": "Validate parsed payload with Zod before use in domain/runtime logic."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "high",
+        "file": "E:\\Project\\harness\\packages\\quality\\src\\reporter.test.ts",
+        "line": 57,
+        "description": "JSON.parse() used without visible Zod validation in file.",
+        "suggestedFix": "Validate parsed payload with Zod before use in domain/runtime logic."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "high",
+        "file": "E:\\Project\\harness\\packages\\quality\\src\\reporter.test.ts",
+        "line": 62,
+        "description": "JSON.parse() used without visible Zod validation in file.",
+        "suggestedFix": "Validate parsed payload with Zod before use in domain/runtime logic."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "high",
+        "file": "E:\\Project\\harness\\packages\\quality\\src\\scorers\\lint-scorer.ts",
+        "line": 77,
+        "description": "JSON.parse() used without visible Zod validation in file.",
+        "suggestedFix": "Validate parsed payload with Zod before use in domain/runtime logic."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "high",
+        "file": "E:\\Project\\harness\\packages\\quality\\src\\scorers\\test-coverage-scorer.ts",
+        "line": 47,
+        "description": "JSON.parse() used without visible Zod validation in file.",
+        "suggestedFix": "Validate parsed payload with Zod before use in domain/runtime logic."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "high",
+        "file": "E:\\Project\\harness\\packages\\ui-validation\\src\\formatter.test.ts",
+        "line": 32,
+        "description": "JSON.parse() used without visible Zod validation in file.",
+        "suggestedFix": "Validate parsed payload with Zod before use in domain/runtime logic."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "high",
+        "file": "E:\\Project\\harness\\packages\\ui-validation\\src\\formatter.test.ts",
+        "line": 33,
+        "description": "JSON.parse() used without visible Zod validation in file.",
+        "suggestedFix": "Validate parsed payload with Zod before use in domain/runtime logic."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "high",
+        "file": "E:\\Project\\harness\\packages\\ui-validation\\src\\formatter.test.ts",
+        "line": 47,
+        "description": "JSON.parse() used without visible Zod validation in file.",
+        "suggestedFix": "Validate parsed payload with Zod before use in domain/runtime logic."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\apps\\example\\src\\app-wiring.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add app-wiring.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\apps\\example\\src\\domains\\tasks\\config\\tasks.config.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add tasks.config.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\apps\\example\\src\\domains\\tasks\\providers\\auth.provider.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add auth.provider.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\apps\\example\\src\\domains\\tasks\\providers\\connectors.provider.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add connectors.provider.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\apps\\example\\src\\domains\\tasks\\providers\\feature-flags.provider.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add feature-flags.provider.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\apps\\example\\src\\domains\\tasks\\providers\\telemetry.provider.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add telemetry.provider.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\apps\\example\\src\\domains\\tasks\\runtime\\tasks.runtime.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add tasks.runtime.test.ts next to the module."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\apps\\example\\src\\domains\\tasks\\service\\tasks.service.test.ts",
+        "line": 106,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\apps\\example\\src\\utils\\logger.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add logger.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\apps\\example\\src\\utils\\result.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add result.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\apps\\example\\src\\utils\\validation.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add validation.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\apps\\example\\vitest.config.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add vitest.config.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\eslint-plugin-harness\\src\\configs\\recommended.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add recommended.test.ts next to the module."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\eslint-plugin-harness\\src\\rules\\naming-conventions.ts",
+        "line": 34,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\eslint-plugin-harness\\src\\utils\\constants.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add constants.test.ts next to the module."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\eslint-plugin-harness\\src\\utils\\constants.ts",
+        "line": 12,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\eslint-plugin-harness\\src\\utils\\layer-order.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add layer-order.test.ts next to the module."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\eslint-plugin-harness\\src\\utils\\layer-order.ts",
+        "line": 9,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\eslint-plugin-harness\\src\\utils\\parse-import.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add parse-import.test.ts next to the module."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\eslint-plugin-harness\\src\\utils\\parse-import.ts",
+        "line": 24,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\eslint-plugin-harness\\src\\utils\\parse-import.ts",
+        "line": 28,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\eslint-plugin-harness\\src\\utils\\remediation.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add remediation.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\eslint-plugin-harness\\vitest.config.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add vitest.config.test.ts next to the module."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\observability\\src\\logger.test.ts",
+        "line": 20,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\observability\\src\\logger.test.ts",
+        "line": 50,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\observability\\src\\metrics.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add metrics.test.ts next to the module."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\observability\\src\\sdk.test.ts",
+        "line": 11,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\observability\\src\\sdk.test.ts",
+        "line": 12,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\observability\\src\\sdk.test.ts",
+        "line": 13,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\observability\\src\\sdk.test.ts",
+        "line": 14,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "No YOLO Probing",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\observability\\src\\sdk.test.ts",
+        "line": 101,
+        "description": "Deep optional chaining with unknown/any typing suggests YOLO probing.",
+        "suggestedFix": "Validate and narrow data shape before property access; prefer typed adapters."
+      },
+      {
+        "principle": "No YOLO Probing",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\observability\\src\\sdk.test.ts",
+        "line": 102,
+        "description": "Deep optional chaining with unknown/any typing suggests YOLO probing.",
+        "suggestedFix": "Validate and narrow data shape before property access; prefer typed adapters."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\observability\\src\\tracing.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add tracing.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\observability\\src\\types.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add types.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\observability\\vitest.config.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add vitest.config.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\pr-lifecycle\\src\\approve-and-merge.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add approve-and-merge.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\pr-lifecycle\\src\\config.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add config.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\pr-lifecycle\\src\\create-pr.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add create-pr.test.ts next to the module."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\pr-lifecycle\\src\\gh-client.ts",
+        "line": 26,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\pr-lifecycle\\src\\gh-client.ts",
+        "line": 47,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\pr-lifecycle\\src\\gh-client.ts",
+        "line": 77,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\pr-lifecycle\\src\\quality-gates.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add quality-gates.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\pr-lifecycle\\src\\read-comments.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add read-comments.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\pr-lifecycle\\src\\request-review.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add request-review.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\pr-lifecycle\\src\\respond-to-review.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add respond-to-review.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\pr-lifecycle\\src\\review-orchestrator.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add review-orchestrator.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\pr-lifecycle\\src\\types.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add types.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\pr-lifecycle\\vitest.config.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add vitest.config.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\quality\\src\\aggregate.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add aggregate.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\quality\\src\\entropy\\cleanup-pr-generator.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add cleanup-pr-generator.test.ts next to the module."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\quality\\src\\entropy\\deviation-scanner.test.ts",
+        "line": 17,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\quality\\src\\entropy\\deviation-scanner.test.ts",
+        "line": 95,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\quality\\src\\entropy\\patterns.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add patterns.test.ts next to the module."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\quality\\src\\entropy\\patterns.ts",
+        "line": 15,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\quality\\src\\entropy\\types.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add types.test.ts next to the module."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\quality\\src\\reporter.test.ts",
+        "line": 62,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\quality\\src\\scorers\\doc-coverage-scorer.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add doc-coverage-scorer.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\quality\\src\\scorers\\lint-scorer.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add lint-scorer.test.ts next to the module."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\quality\\src\\scorers\\lint-scorer.ts",
+        "line": 77,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\quality\\src\\scorers\\lint-scorer.ts",
+        "line": 82,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\quality\\src\\scorers\\test-coverage-scorer.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add test-coverage-scorer.test.ts next to the module."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\quality\\src\\scorers\\test-coverage-scorer.ts",
+        "line": 47,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\quality\\src\\scorers\\test-coverage-scorer.ts",
+        "line": 54,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\quality\\src\\scorers\\type-safety-scorer.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add type-safety-scorer.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\quality\\src\\types.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add types.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\quality\\vitest.config.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add vitest.config.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\ui-validation\\playwright.config.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add playwright.config.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\ui-validation\\src\\cdp-client.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add cdp-client.test.ts next to the module."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\ui-validation\\src\\console-collector.test.ts",
+        "line": 53,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\ui-validation\\src\\console-collector.test.ts",
+        "line": 65,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\ui-validation\\src\\console-collector.test.ts",
+        "line": 75,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\ui-validation\\src\\console-collector.test.ts",
+        "line": 77,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\ui-validation\\src\\console-collector.test.ts",
+        "line": 89,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\ui-validation\\src\\dom-snapshot.test.ts",
+        "line": 48,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\ui-validation\\src\\dom-snapshot.test.ts",
+        "line": 74,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\ui-validation\\src\\dom-snapshot.test.ts",
+        "line": 94,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\ui-validation\\src\\dom-snapshot.test.ts",
+        "line": 99,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\ui-validation\\src\\dom-snapshot.test.ts",
+        "line": 113,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\ui-validation\\src\\dom-snapshot.test.ts",
+        "line": 120,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\ui-validation\\src\\dom-snapshot.ts",
+        "line": 84,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\ui-validation\\src\\formatter.test.ts",
+        "line": 36,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\ui-validation\\src\\formatter.test.ts",
+        "line": 52,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\ui-validation\\src\\interaction.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add interaction.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\ui-validation\\src\\navigation.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add navigation.test.ts next to the module."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\ui-validation\\src\\screenshot.test.ts",
+        "line": 27,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\ui-validation\\src\\screenshot.test.ts",
+        "line": 44,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Parse at Boundaries",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\ui-validation\\src\\screenshot.test.ts",
+        "line": 73,
+        "description": "Type assertion found where boundary parsing should enforce runtime safety.",
+        "suggestedFix": "Replace ad-hoc assertions with Zod schema parse/safeParse at module boundaries."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\ui-validation\\src\\types.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add types.test.ts next to the module."
+      },
+      {
+        "principle": "Tests Co-Located with Source",
+        "severity": "medium",
+        "file": "E:\\Project\\harness\\packages\\ui-validation\\vitest.config.ts",
+        "description": "Source module does not have co-located test file.",
+        "suggestedFix": "Add vitest.config.test.ts next to the module."
+      }
+    ],
+    "summary": {
+      "total": 99,
+      "byPrinciple": {
+        "Parse at Boundaries": 50,
+        "Tests Co-Located with Source": 47,
+        "No YOLO Probing": 2
+      },
+      "bySeverity": {
+        "high": 10,
+        "medium": 89
+      }
+    }
+  },
+  "docs": {
+    "timestamp": "2026-03-04T04:02:18.209Z",
+    "staleDocuments": [],
+    "totalBrokenLinks": 0,
+    "totalFilesChecked": 19
+  }
+}

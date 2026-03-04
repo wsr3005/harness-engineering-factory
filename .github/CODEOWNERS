@@ -1,0 +1,8 @@
+# Default: require review for all changes
+* @team
+
+# Docs can be auto-merged by agents
+docs/ @team
+
+# CI config requires human review
+.github/ @team-leads
