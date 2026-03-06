@@ -15,6 +15,8 @@ export const CreateTaskSchema = TaskSchema.omit({
   id: true,
   createdAt: true,
   updatedAt: true,
+}).extend({
+  status: TaskStatusSchema.default('todo'),
 });
 
 export const UpdateTaskSchema = CreateTaskSchema.partial();
@@ -22,4 +24,5 @@ export const UpdateTaskSchema = CreateTaskSchema.partial();
 export type TaskStatus = z.infer<typeof TaskStatusSchema>;
 export type Task = z.infer<typeof TaskSchema>;
 export type CreateTask = z.infer<typeof CreateTaskSchema>;
+export type CreateTaskInput = z.input<typeof CreateTaskSchema>;
 export type UpdateTask = z.infer<typeof UpdateTaskSchema>;

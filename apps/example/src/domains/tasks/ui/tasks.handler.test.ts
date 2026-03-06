@@ -10,17 +10,31 @@ import {
 } from './index.js';
 
 describe('task handlers', () => {
-  it('creates task through handler', () => {
+  it('creates task with default status todo when status omitted', () => {
     const runtime = createTasksRuntime();
     const result = handleCreateTask(runtime.service, {
       title: 'Handler create',
       description: 'B',
-      status: 'todo',
     });
 
     expect(result.ok).toBe(true);
     if (result.ok) {
       expect(result.data.id).toBeTruthy();
+      expect(result.data.status).toBe('todo');
+    }
+  });
+
+  it('creates task with explicit status', () => {
+    const runtime = createTasksRuntime();
+    const result = handleCreateTask(runtime.service, {
+      title: 'Handler create explicit',
+      description: 'B',
+      status: 'in_progress',
+    });
+
+    expect(result.ok).toBe(true);
+    if (result.ok) {
+      expect(result.data.status).toBe('in_progress');
     }
   });
 
@@ -60,18 +74,66 @@ describe('task handlers', () => {
     }
   });
 
-  it('updates task status and blocks invalid transition', () => {
+  it('updates task status through valid transition', () => {
     const runtime = createTasksRuntime();
     const created = handleCreateTask(runtime.service, {
       title: 'Handler update',
       description: 'B',
-      status: 'done',
     });
 
     expect(created.ok).toBe(true);
     if (!created.ok) {
       return;
     }
+
+    const updated = handleUpdateTask(runtime.service, {
+      id: created.data.id,
+      status: 'in_progress',
+    });
+
+    expect(updated.ok).toBe(true);
+    if (updated.ok) {
+      expect(updated.data.status).toBe('in_progress');
+    }
+  });
+
+  it('blocks todo -> done transition (must go through in_progress)', () => {
+    const runtime = createTasksRuntime();
+    const created = handleCreateTask(runtime.service, {
+      title: 'Handler invalid',
+      description: 'B',
+    });
+
+    expect(created.ok).toBe(true);
+    if (!created.ok) {
+      return;
+    }
+
+    const invalid = handleUpdateTask(runtime.service, {
+      id: created.data.id,
+      status: 'done',
+    });
+
+    expect(invalid.ok).toBe(false);
+    if (!invalid.ok) {
+      expect(invalid.error.code).toBe('INVALID_TRANSITION');
+    }
+  });
+
+  it('blocks done -> todo transition (must reopen to in_progress)', () => {
+    const runtime = createTasksRuntime();
+    const created = handleCreateTask(runtime.service, {
+      title: 'Handler reopen',
+      description: 'B',
+      status: 'in_progress',
+    });
+
+    expect(created.ok).toBe(true);
+    if (!created.ok) {
+      return;
+    }
+
+    handleUpdateTask(runtime.service, { id: created.data.id, status: 'done' });
 
     const invalid = handleUpdateTask(runtime.service, {
       id: created.data.id,
@@ -89,7 +151,6 @@ describe('task handlers', () => {
     const created = handleCreateTask(runtime.service, {
       title: 'Handler delete',
       description: 'B',
-      status: 'todo',
     });
 
     expect(created.ok).toBe(true);

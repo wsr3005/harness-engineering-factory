@@ -8,9 +8,8 @@ import {
   TaskSchema,
   TaskStatusSchema,
   UpdateTaskSchema,
-  type CreateTask,
+  type CreateTaskInput,
   type Task,
-  type TaskStatus,
   type UpdateTask,
 } from '../types/index.js';
 
@@ -27,7 +26,7 @@ const FindAllFilterSchema = z
 export type FindAllFilter = z.infer<typeof FindAllFilterSchema>;
 
 export interface TaskRepository {
-  create(input: CreateTask): Task;
+  create(input: CreateTaskInput): Task;
   findById(id: string): Task | undefined;
   findAll(filter?: FindAllFilter): Task[];
   update(id: string, input: UpdateTask): Task | undefined;
@@ -42,7 +41,7 @@ export class InMemoryTaskRepository implements TaskRepository {
     this.config = createTasksConfig(config);
   }
 
-  create(input: CreateTask): Task {
+  create(input: CreateTaskInput): Task {
     const parsedInput = CreateTaskSchema.parse(input);
     const now = new Date();
     const task = TaskSchema.parse({
@@ -101,5 +100,3 @@ export class InMemoryTaskRepository implements TaskRepository {
     return this.tasks.delete(taskId);
   }
 }
-
-export const isTerminalStatus = (status: TaskStatus): boolean => status === 'done';

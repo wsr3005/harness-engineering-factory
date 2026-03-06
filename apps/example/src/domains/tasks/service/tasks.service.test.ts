@@ -17,7 +17,6 @@ describe('TaskService', () => {
     const created = service.createTask({
       title: '  Build feature  ',
       description: '  details  ',
-      status: 'todo',
     });
 
     expect(created.title).toBe('Build feature');
@@ -25,9 +24,24 @@ describe('TaskService', () => {
     expect(created.status).toBe('todo');
   });
 
+  it('creates task with explicit status', () => {
+    const service = new TaskService({
+      repo: new InMemoryTaskRepository(),
+      config,
+    });
+
+    const created = service.createTask({
+      title: 'In progress task',
+      description: 'already started',
+      status: 'in_progress',
+    });
+
+    expect(created.status).toBe('in_progress');
+  });
+
   it('gets existing task', () => {
     const repo = new InMemoryTaskRepository();
-    const created = repo.create({ title: 'A', description: 'B', status: 'todo' });
+    const created = repo.create({ title: 'A', description: 'B' });
     const service = new TaskService({ repo, config });
 
     expect(service.getTask(created.id).id).toBe(created.id);
@@ -42,34 +56,81 @@ describe('TaskService', () => {
 
   it('lists tasks from repository', () => {
     const repo = new InMemoryTaskRepository();
-    repo.create({ title: 'A', description: 'B', status: 'todo' });
-    repo.create({ title: 'C', description: 'D', status: 'done' });
+    repo.create({ title: 'A', description: 'B' });
+    repo.create({ title: 'C', description: 'D', status: 'in_progress' });
     const service = new TaskService({ repo, config });
 
     expect(service.listTasks()).toHaveLength(2);
-    expect(service.listTasks({ status: 'done' })).toHaveLength(1);
+    expect(service.listTasks({ status: 'in_progress' })).toHaveLength(1);
   });
 
-  it('updates status with valid transitions', () => {
+  it('allows todo -> in_progress', () => {
     const repo = new InMemoryTaskRepository();
-    const created = repo.create({ title: 'A', description: 'B', status: 'todo' });
+    const created = repo.create({ title: 'A', description: 'B' });
     const service = new TaskService({ repo, config });
 
     const updated = service.updateTaskStatus(created.id, 'in_progress');
     expect(updated.status).toBe('in_progress');
   });
 
-  it('throws on done to todo transition', () => {
+  it('allows in_progress -> done', () => {
     const repo = new InMemoryTaskRepository();
-    const created = repo.create({ title: 'A', description: 'B', status: 'done' });
+    const created = repo.create({ title: 'A', description: 'B', status: 'in_progress' });
     const service = new TaskService({ repo, config });
 
+    const updated = service.updateTaskStatus(created.id, 'done');
+    expect(updated.status).toBe('done');
+  });
+
+  it('allows in_progress -> todo', () => {
+    const repo = new InMemoryTaskRepository();
+    const created = repo.create({ title: 'A', description: 'B', status: 'in_progress' });
+    const service = new TaskService({ repo, config });
+
+    const updated = service.updateTaskStatus(created.id, 'todo');
+    expect(updated.status).toBe('todo');
+  });
+
+  it('allows done -> in_progress (reopen)', () => {
+    const repo = new InMemoryTaskRepository();
+    const created = repo.create({ title: 'A', description: 'B', status: 'in_progress' });
+    const service = new TaskService({ repo, config });
+
+    service.updateTaskStatus(created.id, 'done');
+    const reopened = service.updateTaskStatus(created.id, 'in_progress');
+    expect(reopened.status).toBe('in_progress');
+  });
+
+  it('throws on todo -> done (must go through in_progress)', () => {
+    const repo = new InMemoryTaskRepository();
+    const created = repo.create({ title: 'A', description: 'B' });
+    const service = new TaskService({ repo, config });
+
+    expect(() => service.updateTaskStatus(created.id, 'done')).toThrow(InvalidTaskTransitionError);
+  });
+
+  it('throws on done -> todo (must reopen to in_progress first)', () => {
+    const repo = new InMemoryTaskRepository();
+    const created = repo.create({ title: 'A', description: 'B', status: 'in_progress' });
+    const service = new TaskService({ repo, config });
+
+    service.updateTaskStatus(created.id, 'done');
     expect(() => service.updateTaskStatus(created.id, 'todo')).toThrow(InvalidTaskTransitionError);
+  });
+
+  it('treats same-status transition as idempotent no-op', () => {
+    const repo = new InMemoryTaskRepository();
+    const created = repo.create({ title: 'A', description: 'B' });
+    const service = new TaskService({ repo, config });
+
+    const result = service.updateTaskStatus(created.id, 'todo');
+    expect(result.id).toBe(created.id);
+    expect(result.status).toBe('todo');
   });
 
   it('deletes existing task', () => {
     const repo = new InMemoryTaskRepository();
-    const created = repo.create({ title: 'A', description: 'B', status: 'todo' });
+    const created = repo.create({ title: 'A', description: 'B' });
     const service = new TaskService({ repo, config });
 
     service.deleteTask(created.id);
@@ -91,8 +152,8 @@ describe('TaskService', () => {
       telemetry,
     });
 
-    const created = service.createTask({ title: 'A', description: 'B', status: 'todo' });
-    service.updateTaskStatus(created.id, 'done');
+    const created = service.createTask({ title: 'A', description: 'B' });
+    service.updateTaskStatus(created.id, 'in_progress');
     service.deleteTask(created.id);
 
     expect(telemetry.record).toHaveBeenCalledTimes(3);
@@ -118,6 +179,7 @@ describe('TaskService', () => {
 
     const service = new TaskService({ repo: mockRepo, config });
     expect(service.listTasks()).toHaveLength(1);
-    expect(service.updateTaskStatus(task.id, 'done').status).toBe('done');
+    const updated = service.updateTaskStatus(task.id, 'in_progress');
+    expect(updated.status).toBe('in_progress');
   });
 });

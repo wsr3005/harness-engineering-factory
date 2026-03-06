@@ -28,7 +28,7 @@ const ListInputSchema = z
 const CreateInputSchema = z.object({
   title: z.string().min(1).max(200),
   description: z.string().max(2000),
-  status: TaskStatusSchema,
+  status: TaskStatusSchema.default('todo'),
 });
 
 const UpdateStatusInputSchema = z.object({

@@ -4,15 +4,34 @@ import type { TasksConfig } from '../config/index.js';
 import type { TelemetryProvider } from '../providers/index.js';
 import { NoopTelemetryProvider } from '../providers/index.js';
 import type { FindAllFilter, TaskRepository } from '../repo/index.js';
-import { isTerminalStatus } from '../repo/index.js';
 import {
   CreateTaskSchema,
   TaskStatusSchema,
   UpdateTaskSchema,
-  type CreateTask,
+  type CreateTaskInput,
   type Task,
   type TaskStatus,
 } from '../types/index.js';
+
+/**
+ * Allowed status transitions per product spec (tasks-domain.md).
+ *
+ * - todo -> in_progress
+ * - in_progress -> done
+ * - in_progress -> todo
+ * - done -> in_progress (reopen)
+ *
+ * Disallowed:
+ * - todo -> done (must move through in_progress)
+ * - done -> todo (must reopen to in_progress first)
+ *
+ * Same-status transitions are treated as idempotent no-ops.
+ */
+const ALLOWED_TRANSITIONS: Record<TaskStatus, ReadonlySet<TaskStatus>> = {
+  todo: new Set<TaskStatus>(['in_progress']),
+  in_progress: new Set<TaskStatus>(['todo', 'done']),
+  done: new Set<TaskStatus>(['in_progress']),
+};
 
 const IdSchema = z.string().uuid();
 
@@ -47,7 +66,7 @@ export class TaskService {
     this.telemetry = deps.telemetry ?? new NoopTelemetryProvider();
   }
 
-  createTask(input: CreateTask): Task {
+  createTask(input: CreateTaskInput): Task {
     const parsed = CreateTaskSchema.parse({
       ...input,
       title: input.title.trim(),
@@ -85,7 +104,11 @@ export class TaskService {
     const nextStatus = TaskStatusSchema.parse(status);
     const existing = this.getTask(taskId);
 
-    if (isTerminalStatus(existing.status) && nextStatus === 'todo') {
+    if (existing.status === nextStatus) {
+      return existing;
+    }
+
+    if (!ALLOWED_TRANSITIONS[existing.status].has(nextStatus)) {
       throw new InvalidTaskTransitionError(existing.status, nextStatus);
     }
 
