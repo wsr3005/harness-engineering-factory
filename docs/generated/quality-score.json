@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-06T02:58:31.620Z",
+  "timestamp": "2026-03-06T03:36:23.838Z",
   "domains": [
     {
       "domain": "tasks",
@@ -19,17 +19,10 @@
       },
       "testCoverage": {
         "name": "test-coverage",
-        "score": 0,
+        "score": 95.54823529411765,
         "weight": 0.25,
-        "details": "Coverage data unavailable for E:\\Project\\harness\\apps\\example\\src\\domains\\tasks",
-        "violations": [
-          {
-            "file": "E:\\Project\\harness\\apps\\example\\src\\domains\\tasks",
-            "rule": "coverage.unavailable",
-            "message": "coverage/coverage-summary.json is missing or unreadable",
-            "severity": "warning"
-          }
-        ]
+        "details": "Coverage score for E:\\Project\\harness\\apps\\example\\src\\domains\\tasks calculated from 17 files",
+        "violations": []
       },
       "docCoverage": {
         "name": "doc-coverage",
@@ -38,10 +31,10 @@
         "details": "Documentation score for tasks: 100/100",
         "violations": []
       },
-      "overall": 75,
-      "grade": "B"
+      "overall": 98.88705882352942,
+      "grade": "A"
     }
   ],
-  "overall": 75,
-  "grade": "B"
+  "overall": 98.88705882352942,
+  "grade": "A"
 }

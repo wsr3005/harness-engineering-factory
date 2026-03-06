@@ -1,75 +1,19 @@
-import { execFileSync } from 'node:child_process';
-
 import { approveAndMerge } from './approve-and-merge.js';
 import { parseRalphLoopConfig } from './config.js';
 import { createPullRequest } from './create-pr.js';
 import { GhClient } from './gh-client.js';
+import { defaultRunCommand, emitProgress, runCiChecks, toAttemptRecord } from './ralph-helpers.js';
 import { readReviewFeedback } from './read-comments.js';
 import { requestReviews } from './request-review.js';
 import { respondToFeedback } from './respond-to-review.js';
 import { WorktreeManager } from './worktree-manager.js';
-import type { AttemptRecord, RalphLoopConfig, RalphLoopState, Result } from './types.js';
+import type { RalphLoopConfig, RalphLoopState, Result } from './types.js';
 
 interface RalphLoopDependencies {
   ghClient?: GhClient;
   worktreeManager?: WorktreeManager;
   runCommand?: (command: string, cwd: string) => Result<string, string>;
   now?: () => Date;
-}
-
-function emitProgress(event: string, payload: Record<string, unknown>): void {
-  const line = JSON.stringify({ event, timestamp: new Date().toISOString(), ...payload });
-  process.stdout.write(`${line}\n`);
-}
-
-function defaultRunCommand(command: string, cwd: string): Result<string, string> {
-  try {
-    const output = execFileSync(command, {
-      cwd,
-      shell: true,
-      encoding: 'utf8',
-      stdio: 'pipe',
-    });
-    return { ok: true, value: output };
-  } catch (error) {
-    const details = error instanceof Error ? error.message : String(error);
-    return { ok: false, error: details };
-  }
-}
-
-function toAttemptRecord(
-  attempt: number,
-  action: string,
-  result: 'success' | 'failure',
-  duration: number,
-  now: Date,
-  errorContext?: string,
-): AttemptRecord {
-  return {
-    attempt,
-    timestamp: now.toISOString(),
-    action,
-    result,
-    errorContext,
-    duration,
-  };
-}
-
-function runCiChecks(
-  runCommand: (command: string, cwd: string) => Result<string, string>,
-  cwd: string,
-): Result<true, string> {
-  const checks = ['pnpm run typecheck', 'pnpm run lint', 'pnpm run test'];
-  for (const check of checks) {
-    const result = runCommand(check, cwd);
-    if (!result.ok) {
-      return {
-        ok: false,
-        error: `${check} failed: ${result.error}`,
-      };
-    }
-  }
-  return { ok: true, value: true };
 }
 
 export function runRalphLoop(
